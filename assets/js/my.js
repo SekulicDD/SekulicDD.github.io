@@ -10,12 +10,13 @@ $( document ).ready(function() {
 });
 
 function changeNextPage(){
-    $("#fs_center ul").hide(); 
+    $("#nav ul").hide(); 
     resetClassAnimations(false);
     addClassAnimation(false);
 
     setTimeout (function() {
         $("#first_section").css("display","none");
+        $("#fs_center").css("display","none");
     }, 600);
 }
 
@@ -24,7 +25,8 @@ function changeBackPage(){
     $("#first_section").css("display","grid");
     addClassAnimation(true);
     setTimeout (function() {
-        $("#fs_center ul").fadeIn(); 
+        $("#fs_center").fadeIn(); 
+        $("#nav ul").fadeIn(); 
     }, 800);
 }
 
