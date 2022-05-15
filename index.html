@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>David Sekulic</title>
+
+    <meta name="description" content="Hello my name is David and this is my portfolio." />
+    <meta name="title" property="og:title" content="David Sekulic"/>
+    <meta property="og:type" content="website"/>
+    <meta name="image" property="og:image" content="https://i.imgur.com/EwTkTzC.png"/>
+    <meta name="description" property="og:description" content="Hello my name is David and this is my portfolio." /><meta name="author" content="_" />
+    <meta name="author" content="David Sekulic"/>
+
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+
     <link rel="stylesheet" href="assets/style/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,21 +25,17 @@
   </head>
   <body>
 	<div class="container">
-        <div id="bg_div1">
-          <svg><use href="#bg_svg"></use></svg>
-        </div>
+        <div id="bg_div1"></div>
         <div id="fs_center">
           <div id="nav">
             <ul>
-              <li><a href="#">Work</a></li>
-              <li><a href="#">About</a></li>
+              <li><a id="workLink" href="#">Work</a></li>
+              <li><a id="aboutLink" href="#">About</a></li>
               <li><a href="#">Contact</a></li>
             </ul>
           </div>
         </div>   
-        <div id="bg_div2">
-          
-        </div>
+        <div id="bg_div2"></div>
         
         <section id="first_section">
             <div id="fs_left">
@@ -44,13 +50,13 @@
             <div id="fs_right">
               <div></div><div></div>
               <div class="logo_img">
-                <img src="assets/img/github-ico.png" alt="github logo"/>
+                <a href="https://github.com/SekulicDD"><img src="assets/img/github-ico.png" alt="github logo"/></a>
               </div>
               <div class="logo_text">
                 <p>GitHub</p>
               </div>
               <div class="logo_img">
-                <img src="assets/img/linkedin-ico.png"  alt="linkedin logo"/>
+                <a href="https://www.linkedin.com/in/david-sekulic-891123227/"><img src="assets/img/linkedin-ico.png"  alt="linkedin logo"/></a>
               </div>
               <div class="logo_text">
                 <p>LinkedIn</p>            
@@ -59,12 +65,15 @@
         </section>
         <section id="seccond_section">
           <div id="ss_left">
-            <div id="back">
-              <img src="assets/img/back.png"  alt="back arrow"/>
+        
+            <div class="menu">
+              <ul>
+                <li><a class="homeLink" href="#">Home</a></li>
+                <li><a href="#">Work</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
             </div>
-            <div id="contact_btn">
-              <input type="button" value="Contact me" class="btn">
-            </div>
+         
             <div class="title_div">
               <h2>My skills</h2>
             </div>
@@ -97,6 +106,91 @@
               <p>Graduate in internet technology looking for a professional internship or employment. A hardworking, responsible and ambitious person with great interest and desire to acquire new knowledge and experiences.</p>
             </div>
           </div>
+        </section>
+
+        <section id="third_section">
+          <h2>My work</h2>
+          <div class="menu" id="workMenu">
+            <ul>
+              <li><a class="homeLink" href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div id="projects_container">
+              <div class="project">
+                <a href="https://github.com/SekulicDD/Fantasy-Store-Laravel">
+                <div class="pro_img"><img src="assets/img/project/movieReview.jpg" alt="project"/></div>
+                <div class="pro_text">
+                  <div>
+                    <p>PHP - Laravel</p>
+                    <p>JS - Angular</p>
+                    <p>HTML/CSS - Bootstrap</p>
+                  </div>      
+                </div>
+                </a>
+              </div>
+            
+            <div class="project">
+              <a href="https://github.com/SekulicDD/Fantasy-Store-Laravel"><div class="pro_img"><img src="assets/img/project/fantasyStore.jpg" alt="project"/></div>
+                <div class="pro_text">
+                  <div>
+                    <p>PHP - Laravel</p>
+                    <p>JS - JQuery</p>
+                    <p>HTML/CSS - Bootstrap</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="project">
+              <a href="https://github.com/SekulicDD/Bookstore-Website-">
+                <div class="pro_img"><img src="assets/img/project/bookstore.jpg" alt="project"/></div>
+                <div class="pro_text">
+                  <div>
+                    <p>PHP</p>
+                    <p>JS - JQuery</p>
+                    <p>HTML/CSS - Bootstrap</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="project">
+              <a href="https://github.com/SekulicDD/Zay-store-Angular">
+                <div class="pro_img"><img src="assets/img/project/zayStore.jpg" alt="project"/></div>
+                <div class="pro_text">
+                  <div>
+                    <p>Firebase</p>
+                    <p>JS - Angular</p>
+                    <p>HTML/CSS - Bootstrap</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="project">
+              <a href="https://github.com/SekulicDD/PcShop-Website-">
+                <div class="pro_img"><img src="assets/img/project/pcShop.jpg" alt="project"/></div>
+                <div class="pro_text">
+                  <div>
+                    <p>PHP</p>
+                    <p>JS - JQuery</p>
+                    <p>HTML/CSS - Bootstrap</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="project">
+              <a href="https://github.com/SekulicDD/Web-Programiranje-ASP">
+                <div class="pro_img"><img src="assets/img/project/webASP.jpg" alt="project"/></div>
+                <div class="pro_text">
+                  <div>
+                    <p>C# - ASP .NET</p>
+                  </div>      
+                </div>
+              </a>
+            </div>
+
+          </div>
+    
         </section>
     </div>
 

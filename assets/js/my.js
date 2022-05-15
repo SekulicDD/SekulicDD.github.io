@@ -1,15 +1,25 @@
 $( document ).ready(function() {
-    $("#fs_center ul li").on("click",function(e){
-        e.preventDefault();
-        changeNextPage()});
 
-    $("#back").on("click",function(e){
+    $("#workLink").on("click",function(e){
         e.preventDefault();
-        changeBackPage()});
- 
+        changeNextPage("work")});
+
+    $("#aboutLink").on("click",function(e){
+        e.preventDefault();
+        changeNextPage("about")});
+
+    $(".homeLink").on("click",function(e){
+        e.preventDefault();
+        routeHomePage()});
 });
 
-function changeNextPage(){
+function changeNextPage(page){
+
+    if(page=="about")
+        $("#seccond_section").css("display","grid");
+    if(page=="work")
+        $("#third_section").css("display","grid");
+
     $("#nav ul").hide(); 
     resetClassAnimations(false);
     addClassAnimation(false);
@@ -20,14 +30,17 @@ function changeNextPage(){
     }, 600);
 }
 
-function changeBackPage(){
+function routeHomePage(){
     resetClassAnimations(true);
     $("#first_section").css("display","grid");
     addClassAnimation(true);
     setTimeout (function() {
         $("#fs_center").fadeIn(); 
         $("#nav ul").fadeIn(); 
-    }, 800);
+        $("#seccond_section").css("display","none");
+        $("#third_section").css("display","none");
+    }, 950);
+    
 }
 
 function addClassAnimation(reverseBool){
@@ -52,3 +65,4 @@ function resetClassAnimations(reverseBool){
     $("#fs_left").removeClass("move_left_faster"+reverse);
     $("#fs_right").removeClass("move_right_faster"+reverse);
 }
+
