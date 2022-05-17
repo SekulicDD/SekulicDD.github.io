@@ -42,7 +42,7 @@ function changeNextPage(page){
 
     switch (page) {
         case "about":
-            $("#about_section").css("display","grid");
+            $("#about_section").css({"display":"grid","z-index":-2});
             break;
         case "work":
             $("#work_section").css("display","grid");
@@ -71,6 +71,7 @@ function routeHomePage(){
         $("#nav ul").fadeIn(); 
         $("#about_section").css("display","none");
         $("#work_section").css("display","none");
+        $("#contact_section").css("display","none");
     }, 950);
     
 }
