@@ -8,26 +8,49 @@ $( document ).ready(function() {
         e.preventDefault();
         changeNextPage("about")});
 
+    $("#contactLink").on("click",function(e){
+        e.preventDefault();
+        changeNextPage("contact")});
+
     $(".homeLink").on("click",function(e){
         e.preventDefault();
         routeHomePage()});
 
     $("#workToAbout").on("click",function(e){
         e.preventDefault();
-        workToAbout()});
+        changePage("work","about")});  
+    $("#workToContact").on("click",function(e){
+        e.preventDefault();
+        changePage("work","contact")});  
 
     $("#aboutToWork").on("click",function(e){
         e.preventDefault();
-        aboutToWork()});  
-        
+        changePage("about","work")});   
+    $("#aboutToContact").on("click",function(e){
+        e.preventDefault();
+        changePage("about","contact")});  
+            
+    $("#contactToWork").on("click",function(e){
+        e.preventDefault();
+        changePage("contact","work")});  
+    $("#contactToAbout").on("click",function(e){
+        e.preventDefault();
+        changePage("contact","about")});  
 });
 
 function changeNextPage(page){
 
-    if(page=="about")
-        $("#seccond_section").css("display","grid");
-    if(page=="work")
-        $("#third_section").css("display","grid");
+    switch (page) {
+        case "about":
+            $("#about_section").css("display","grid");
+            break;
+        case "work":
+            $("#work_section").css("display","grid");
+            break;
+        default:
+            $("#contact_section").css("display","grid");
+            break;
+    }
 
     $("#nav ul").hide(); 
     resetClassAnimations(false);
@@ -35,7 +58,7 @@ function changeNextPage(page){
 
     setTimeout (function() {
         $("#first_section").css("display","none");
-        $("#fs_center").css("display","none");
+        $("#navParent").css("display","none");
     }, 600);
 }
 
@@ -44,10 +67,10 @@ function routeHomePage(){
     $("#first_section").css("display","grid");
     addClassAnimation(true);
     setTimeout (function() {
-        $("#fs_center").fadeIn(); 
+        $("#navParent").fadeIn(); 
         $("#nav ul").fadeIn(); 
-        $("#seccond_section").css("display","none");
-        $("#third_section").css("display","none");
+        $("#about_section").css("display","none");
+        $("#work_section").css("display","none");
     }, 950);
     
 }
@@ -75,22 +98,21 @@ function resetClassAnimations(reverseBool){
     $("#fs_right").removeClass("move_right_faster"+reverse);
 }
 
-function workToAbout(){
-    $("#third_section").addClass("move_right_faster");
-    $("#seccond_section").css("display","grid");
-    setTimeout (function() {
-        $("#third_section").removeClass("move_right_faster");
-        $("#third_section").css("display","none");
-    }, 650);
-}
+var left=true;
+function changePage(from,to){
+    let direction;
+    if(left)
+        direction="left";
+    else
+        direction="right";
+    left=!left;
 
-function aboutToWork(){
-    $("#seccond_section").addClass("move_left_faster");
-    $("#seccond_section").css("z-index",3);
-    $("#third_section").css("display","grid");
+    $(`#${from}_section`).addClass(`move_${direction}_faster`);
+    $(`#${from}_section`).css("z-index",3);
+    $(`#${to}_section`).css("display","grid");
     setTimeout (function() {
-        $("#seccond_section").removeClass("move_left_faster");
-        $("#seccond_section").css("display","none");
-        $("#seccond_section").css("z-index",-2);
+        $(`#${from}_section`).removeClass(`move_${direction}_faster`);
+        $(`#${from}_section`).css("display","none");
+        $(`#${from}_section`).css("z-index",-2);
     }, 650);
 }
