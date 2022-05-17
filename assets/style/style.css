@@ -48,7 +48,6 @@ body{
   padding:10px 45px 10px 45px;
   border:1px solid;
   margin-top:40px;
-
   background: linear-gradient(to left, var(--main-color) 50%, var(--seccond-color) 50%) right;
   background-size: 200%;
   transition: .6s ease;
@@ -60,16 +59,13 @@ body{
 }
 
 #fs_right{
-  margin-left: 120px;
+  margin-left: 220px;
   font-size:30px;
-  display: grid !important;
-  grid-template:1fr 1fr 1fr 1fr/2fr 3fr;
-  grid-template-areas:".";
 }
-
 
 #fs_right>div{
   height:110px;
+  margin-top: 30px;
 }
 
 .logo_img img{
@@ -78,40 +74,34 @@ body{
 }
 
 .logo_img{
+  position: relative;
   margin-left:60px;
   width:110px;
   cursor:pointer;
-  position: relative;
   z-index:2;
-  grid-column:2;
   transition: all .3s;
 }
 
-.logo_img:nth-child(3){
-  grid-row: 2;
-}
-
-.logo_img:nth-child(5){
-  grid-row: 3;
-}
 
 .logo_img:hover{
   box-shadow:5px 5px 10px 2px rgba(0,0,0,0.51);
   transform: scale(1.05);
 }
 
-.logo_img:hover+.logo_text p{
-  transform: translateX(0%);
+.logo_img:hover .logo_text p{
+  transform: translateX(-70px);
   opacity: 1;
 }
 
 .logo_text{
   text-align: right;
+  position: absolute;
+  top:0;
+  right:100px;
 }
 
 .logo_text p{
   transition: .6s ease;
-  transform: translateX(80%);
   opacity:0;
   text-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
