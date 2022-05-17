@@ -11,6 +11,15 @@ $( document ).ready(function() {
     $(".homeLink").on("click",function(e){
         e.preventDefault();
         routeHomePage()});
+
+    $("#workToAbout").on("click",function(e){
+        e.preventDefault();
+        workToAbout()});
+
+    $("#aboutToWork").on("click",function(e){
+        e.preventDefault();
+        aboutToWork()});  
+        
 });
 
 function changeNextPage(page){
@@ -66,3 +75,22 @@ function resetClassAnimations(reverseBool){
     $("#fs_right").removeClass("move_right_faster"+reverse);
 }
 
+function workToAbout(){
+    $("#third_section").addClass("move_right_faster");
+    $("#seccond_section").css("display","grid");
+    setTimeout (function() {
+        $("#third_section").removeClass("move_right_faster");
+        $("#third_section").css("display","none");
+    }, 650);
+}
+
+function aboutToWork(){
+    $("#seccond_section").addClass("move_left_faster");
+    $("#seccond_section").css("z-index",3);
+    $("#third_section").css("display","grid");
+    setTimeout (function() {
+        $("#seccond_section").removeClass("move_left_faster");
+        $("#seccond_section").css("display","none");
+        $("#seccond_section").css("z-index",-2);
+    }, 650);
+}

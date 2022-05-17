@@ -344,7 +344,7 @@ body{
  }
 
  .project:hover .pro_text{
-  width:110%;
+  opacity: 0.8;
 }
 
 .project:hover .pro_text p{
@@ -353,7 +353,7 @@ body{
 }
 
  .pro_img img{
-  transition: 0.8s ease;
+  transition:0.6s ease;
   opacity:0.67;
   width: 100%;
  }
@@ -365,9 +365,9 @@ body{
   left:50%;
   transform: translate(-50%,-50%);
   text-align: center;
-  width:0;
+  width: 100%;
   background-color: var(--main-color);
-  opacity:0.8;
+  opacity:0;
   height:80px;
   display: flex;
   justify-content: center;
@@ -378,8 +378,7 @@ body{
   margin: 3px;
    opacity: 0;
    font-size: 0 ;
-   transition: 0.5s cubic-bezier(.6,-0.28,.74,.05);
-
+   transition: 0.5s linear;
  }
 
  .pro_text h4{
