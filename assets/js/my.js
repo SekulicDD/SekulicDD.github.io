@@ -8,7 +8,7 @@ $( document ).ready(function() {
         e.preventDefault();
         changeNextPage("about")});
 
-    $("#contactLink").on("click",function(e){
+    $(".contactLink").on("click",function(e){
         e.preventDefault();
         changeNextPage("contact")});
 
@@ -100,7 +100,12 @@ function resetClassAnimations(reverseBool){
 }
 
 var left=true;
+var transitionFinished=true;
 function changePage(from,to){
+    if(!transitionFinished)
+        return;
+
+    transitionFinished=false;
     let direction;
     if(left)
         direction="left";
@@ -115,5 +120,6 @@ function changePage(from,to){
         $(`#${from}_section`).removeClass(`move_${direction}_faster`);
         $(`#${from}_section`).css("display","none");
         $(`#${from}_section`).css("z-index",-2);
-    }, 650);
+        transitionFinished=true;
+    }, 600);
 }
