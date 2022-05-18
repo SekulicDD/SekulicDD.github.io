@@ -59,10 +59,14 @@ function changeNextPage(page){
     setTimeout (function() {
         $("#first_section").css("display","none");
         $("#navParent").css("display","none");
-    }, 600);
+        $("#bg_div1").css("display","none");
+        $("#bg_div2").css("display","none");
+    }, 750);
 }
 
 function routeHomePage(){
+    $("#bg_div1").css("display","block");
+    $("#bg_div2").css("display","block");
     resetClassAnimations(true);
     $("#first_section").css("display","grid");
     addClassAnimation(true);
