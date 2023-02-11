@@ -1,46 +1,49 @@
+
+var currentPage;
 $(document).ready(function () {
 
     history.pushState("home", "", "#home");
-    let currentPage = "home";
+    currentPage = "home";
 
-    $("#nav a").on("click", function(e) {
-        e.preventDefault();
+    $("#nav a").on("click", function (e) {
+        e.preventDefault()
         var page = $(this).data("page");
-        history.pushState(page, "", "#" + page);
         changeNextPage(page);
-        currentPage = page;
-      });
-
-    $(".homeLink").on("click",function(e){
-        e.preventDefault();
-        routeHomePage();
-        currentPage = "home";
     });
     
-    $(".menu a").on("click",function(e){
-        e.preventDefault();
+    $(".contactLink").on("click", function (e) {
+        e.preventDefault()
+        var page = $(this).data("page");
+        changeNextPage(page);
+    });
+
+    $(".homeLink").on("click", function (e) {
+        e.preventDefault()
+        routeHomePage();
+    });
+    
+    $(".menu a").on("click", function (e) {
+        e.preventDefault()
         let source = $(this).data("source");
         let dest = $(this).data("dest");
         history.pushState(dest, "", "#" + dest);
         changePage(source, dest);
-        currentPage = dest;
     });  
 
     window.onpopstate = function (event) {
         if (event.state == "home") {
             routeHomePage();
-            currentPage = "home";
         }
         else {
-            let tmp = event.state;
             changePage(currentPage, event.state);
-            currentPage = tmp;
         }
-
     }
 });
 
-function changeNextPage(page){
+function changeNextPage(page) {
+    
+    history.pushState(page, "", "#" + page);
+    currentPage = page;
 
     switch (page) {
         case "about":
@@ -66,7 +69,10 @@ function changeNextPage(page){
     }, 750);
 }
 
-function routeHomePage(){
+function routeHomePage() {
+    history.pushState("home", "", "#home");
+    currentPage = "home";
+    
     $("#bg_div1").css("display","block");
     $("#bg_div2").css("display","block");
     resetClassAnimations(true);
@@ -108,7 +114,10 @@ function resetClassAnimations(reverseBool){
 
 var left=true;
 var transitionFinished=true;
-function changePage(from,to){
+function changePage(from, to) {
+    
+    currentPage = to;
+
     if(!transitionFinished)
         return;
 
