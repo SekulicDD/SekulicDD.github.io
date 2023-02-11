@@ -1,41 +1,43 @@
-$( document ).ready(function() {
+$(document).ready(function () {
 
-    $("#workLink").on("click",function(e){
-        e.preventDefault();
-        changeNextPage("work")});
+    history.pushState("home", "", "#home");
+    let currentPage = "home";
 
-    $("#aboutLink").on("click",function(e){
+    $("#nav a").on("click", function(e) {
         e.preventDefault();
-        changeNextPage("about")});
-
-    $(".contactLink").on("click",function(e){
-        e.preventDefault();
-        changeNextPage("contact")});
+        var page = $(this).data("page");
+        history.pushState(page, "", "#" + page);
+        changeNextPage(page);
+        currentPage = page;
+      });
 
     $(".homeLink").on("click",function(e){
         e.preventDefault();
-        routeHomePage()});
+        routeHomePage();
+        currentPage = "home";
+    });
+    
+    $(".menu a").on("click",function(e){
+        e.preventDefault();
+        let source = $(this).data("source");
+        let dest = $(this).data("dest");
+        history.pushState(dest, "", "#" + dest);
+        changePage(source, dest);
+        currentPage = dest;
+    });  
 
-    $("#workToAbout").on("click",function(e){
-        e.preventDefault();
-        changePage("work","about")});  
-    $("#workToContact").on("click",function(e){
-        e.preventDefault();
-        changePage("work","contact")});  
+    window.onpopstate = function (event) {
+        if (event.state == "home") {
+            routeHomePage();
+            currentPage = "home";
+        }
+        else {
+            let tmp = event.state;
+            changePage(currentPage, event.state);
+            currentPage = tmp;
+        }
 
-    $("#aboutToWork").on("click",function(e){
-        e.preventDefault();
-        changePage("about","work")});   
-    $("#aboutToContact").on("click",function(e){
-        e.preventDefault();
-        changePage("about","contact")});  
-            
-    $("#contactToWork").on("click",function(e){
-        e.preventDefault();
-        changePage("contact","work")});  
-    $("#contactToAbout").on("click",function(e){
-        e.preventDefault();
-        changePage("contact","about")});  
+    }
 });
 
 function changeNextPage(page){
@@ -79,6 +81,7 @@ function routeHomePage(){
     }, 950);
     
 }
+
 
 function addClassAnimation(reverseBool){
     let reverse="";
