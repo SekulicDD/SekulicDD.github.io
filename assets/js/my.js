@@ -8,21 +8,24 @@ $(document).ready(function () {
     $("#nav a").on("click", function (e) {
         e.preventDefault()
         var page = $(this).data("page");
+        history.pushState(page, "", "#" + page);
         changeNextPage(page);
     });
     
     $(".contactLink").on("click", function (e) {
         e.preventDefault()
         var page = $(this).data("page");
+        history.pushState(page, "", "#" + page);
         changeNextPage(page);
     });
 
     $(".homeLink").on("click", function (e) {
         e.preventDefault()
+        history.pushState("home", "", "#home");
         routeHomePage();
     });
     
-    $(".menu a").on("click", function (e) {
+    $(".menuLink").on("click", function (e) {
         e.preventDefault()
         let source = $(this).data("source");
         let dest = $(this).data("dest");
@@ -31,18 +34,20 @@ $(document).ready(function () {
     });  
 
     window.onpopstate = function (event) {
-        if (event.state == "home") {
+        console.log("POP: " + event.state, " current: " + currentPage);
+        if (event.state == "home" && currentPage == "home") {
             routeHomePage();
+        }
+        else if (currentPage == "home") {
+            history.back();
         }
         else {
             changePage(currentPage, event.state);
-        }
+        }    
     }
 });
 
 function changeNextPage(page) {
-    
-    history.pushState(page, "", "#" + page);
     currentPage = page;
 
     switch (page) {
@@ -70,9 +75,9 @@ function changeNextPage(page) {
 }
 
 function routeHomePage() {
-    history.pushState("home", "", "#home");
+
     currentPage = "home";
-    
+
     $("#bg_div1").css("display","block");
     $("#bg_div2").css("display","block");
     resetClassAnimations(true);
@@ -117,7 +122,6 @@ var transitionFinished=true;
 function changePage(from, to) {
     
     currentPage = to;
-
     if(!transitionFinished)
         return;
 
