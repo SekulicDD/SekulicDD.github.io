@@ -1,27 +1,21 @@
 
-var currentPage;
 $(document).ready(function () {
-
-    history.pushState("home", "", "#home");
-    currentPage = "home";
+    window.history.pushState("", "", "");
 
     $("#nav a").on("click", function (e) {
-        e.preventDefault()
+        e.preventDefault();
         var page = $(this).data("page");
-        history.pushState(page, "", "#" + page);
         changeNextPage(page);
     });
     
     $(".contactLink").on("click", function (e) {
-        e.preventDefault()
+        e.preventDefault();
         var page = $(this).data("page");
-        history.pushState(page, "", "#" + page);
         changeNextPage(page);
     });
 
     $(".homeLink").on("click", function (e) {
-        e.preventDefault()
-        history.pushState("home", "", "#home");
+        e.preventDefault();
         routeHomePage();
     });
     
@@ -29,27 +23,24 @@ $(document).ready(function () {
         e.preventDefault()
         let source = $(this).data("source");
         let dest = $(this).data("dest");
-        history.pushState(dest, "", "#" + dest);
         changePage(source, dest);
     });  
 
-    window.onpopstate = function (event) {
-        console.log("POP: " + event.state, " current: " + currentPage);
-        if (event.state == "home" && currentPage == "home") {
+    window.onpopstate = (event) => {
+        console.log("Current page: " + currentPage + " TO: " + event.state);
+        if (currentPage == "home") {
+            history.back();
+        }     
+        else {
             routeHomePage();
         }
-        else if (currentPage == "home") {
-            history.back();
-        }
-        else {
-            changePage(currentPage, event.state);
-        }    
-    }
+    };
+
 });
+
 
 function changeNextPage(page) {
     currentPage = page;
-
     switch (page) {
         case "about":
             $("#about_section").css({"display":"grid","z-index":-2});
@@ -72,12 +63,11 @@ function changeNextPage(page) {
         $("#bg_div1").css("display","none");
         $("#bg_div2").css("display","none");
     }, 750);
+
 }
 
 function routeHomePage() {
-
     currentPage = "home";
-
     $("#bg_div1").css("display","block");
     $("#bg_div2").css("display","block");
     resetClassAnimations(true);
@@ -120,11 +110,11 @@ function resetClassAnimations(reverseBool){
 var left=true;
 var transitionFinished=true;
 function changePage(from, to) {
-    
-    currentPage = to;
+
     if(!transitionFinished)
         return;
 
+    currentPage = to;
     transitionFinished=false;
     let direction;
     if(left)
@@ -142,4 +132,5 @@ function changePage(from, to) {
         $(`#${from}_section`).css("z-index",-2);
         transitionFinished=true;
     }, 600);
+
 }
